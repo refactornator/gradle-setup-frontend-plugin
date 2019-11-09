@@ -1,0 +1,44 @@
+plugins {
+    id 'java'
+    id 'maven'
+
+    id 'java-gradle-plugin'
+    id 'com.gradle.plugin-publish' version '0.10.1'
+}
+
+group = 'cool.william.frontend'
+version = '0.0.2'
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+repositories {
+    mavenCentral()
+    maven {
+        url "https://plugins.gradle.org/m2/"
+    }
+}
+
+dependencies {
+    compile gradleApi()
+    compile 'commons-io:commons-io:2.6'
+
+    compile 'com.moowork.node:com.moowork.node.gradle.plugin:1.3.1'
+    compile 'gradle.plugin.com.github.psxpaul:gradle-execfork-plugin:0.1.12'
+}
+
+pluginBundle {
+    website = 'https://github.com/wlindner/gradle-setup-frontend-plugin'
+    vcsUrl = 'https://github.com/wlindner/gradle-setup-frontend-plugin'
+    tags = ['spring', 'react', 'frontend']
+    description = 'Setup a minimal React frontend for your Spring Boot app.'
+}
+
+gradlePlugin {
+    plugins {
+        setupFrontendPlugin {
+            id = 'cool.william.frontend'
+            displayName = 'Setup Frontend Plugin'
+            implementationClass = 'cool.william.frontend.SetupFrontendPlugin'
+        }
+    }
+}
