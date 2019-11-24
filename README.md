@@ -5,7 +5,7 @@
 Add the frontend plugin to `build.gradle`
 ```
 plugins {
-  id 'cool.william.frontend' version '0.0.2'
+  id 'cool.william.frontend' version '0.0.5'
 }
 ```
 
