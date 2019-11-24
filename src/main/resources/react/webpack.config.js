@@ -2,14 +2,15 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
-const resources = path.resolve(__dirname, 'src/main/resources')
+const resources = path.resolve(__dirname, 'src/main/resources');
 
-module.exports = {
+module.exports = (env, argv) => ({
+  devtool: argv.mode === 'development' ? 'eval-source-map' : 'none',
   entry: './frontend/index.js',
   output: {
     publicPath: '/',
     filename: 'bundle.js',
-    path: path.join(resources, 'static'),
+    path: path.join(resources, 'static')
   },
   module: {
     rules: [
@@ -17,7 +18,7 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader"
+          loader: 'babel-loader'
         }
       }
     ]
@@ -33,4 +34,4 @@ module.exports = {
       filename: path.join(resources, 'templates', 'index.html')
     })
   ]
-};
+});
