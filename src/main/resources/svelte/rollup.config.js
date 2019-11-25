@@ -3,6 +3,9 @@ import copy from 'rollup-plugin-copy';
 import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import { terser } from 'rollup-plugin-terser';
+import postcss from 'rollup-plugin-postcss';
+import cssnext from 'postcss-cssnext';
+import cssnano from 'cssnano';
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -15,6 +18,13 @@ export default {
 		file: 'src/main/resources/static/bundle.js'
 	},
 	plugins: [
+    postcss({
+      plugins: [
+        cssnext({ warnForDuplicates: false, }),
+        cssnano(),
+      ],
+      extensions: [ '.css' ],
+    }),
 		svelte({
 			// enable run-time checks when not in production
 			dev: !production,
