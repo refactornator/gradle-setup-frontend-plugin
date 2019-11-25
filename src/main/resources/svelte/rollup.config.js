@@ -6,8 +6,12 @@ import { terser } from 'rollup-plugin-terser';
 import postcss from 'rollup-plugin-postcss';
 import cssnext from 'postcss-cssnext';
 import cssnano from 'cssnano';
+import clean from 'rollup-plugin-delete';
 
 const production = !process.env.ROLLUP_WATCH;
+
+const staticResourceFolder = 'src/main/resources/static/';
+const templatesResourceFolder = 'src/main/resources/templates/';
 
 export default {
 	input: 'frontend/main.js',
@@ -15,9 +19,12 @@ export default {
 		sourcemap: !production,
 		format: 'iife',
 		name: 'app',
-		file: 'src/main/resources/static/bundle.js'
+		file: `${staticResourceFolder}bundle.js`
 	},
 	plugins: [
+	  clean({
+	    targets: [`${staticResourceFolder}*`, `${templatesResourceFolder}*`]
+	  }),
     postcss({
       plugins: [
         cssnext({ warnForDuplicates: false, }),
@@ -31,7 +38,7 @@ export default {
 			// we'll extract any component CSS out into
 			// a separate file — better for performance
 			css: css => {
-				css.write('src/main/resources/static/bundle.css');
+				css.write(`${staticResourceFolder}bundle.css`);
 			}
 		}),
 
@@ -52,8 +59,8 @@ export default {
 
     copy({
       targets: [
-        { src: 'frontend/static/**/*', dest: 'src/main/resources/static' },
-        { src: 'frontend/templates/**/*', dest: 'src/main/resources/templates' }
+        { src: 'frontend/static/**/*', dest: staticResourceFolder },
+        { src: 'frontend/templates/**/*', dest: templatesResourceFolder }
       ]
     })
 	],
