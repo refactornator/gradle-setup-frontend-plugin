@@ -32,7 +32,7 @@ public class SetupFrontendPlugin implements Plugin<Project> {
                 .create("frontendStart", ExecFork.class);
         frontendStart.setExecutable("npm");
         frontendStart.setArgs(Arrays.asList(new String[]{"run-script", "start"}));
-        frontendStart.setWaitForOutput("Built at");
+        frontendStart.setWaitForOutput("ms");
         npmInstall.ifPresent(frontendStart::dependsOn);
 
         Optional<Task> bootRun = project.getTasksByName("bootRun", true)

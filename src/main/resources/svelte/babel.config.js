@@ -1,0 +1,4 @@
+module.exports = {
+  presets: ['@babel/preset-env'],
+  plugins: [["transform-es2015-modules-commonjs", { "noInterop": true }]]
+};

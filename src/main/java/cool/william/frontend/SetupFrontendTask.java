@@ -18,13 +18,13 @@ class SetupFrontendTask extends DefaultTask {
     private Logger logger = getProject().getLogger();
     private String projectDirectory = System.getProperty("user.dir");
 
-    private String type = "react";
+    private String type = "svelte";
 
     public SetupFrontendTask() {}
 
     @TaskAction
     void setupFrontend() {
-        if(type.equals("react")) {
+        if(type.equals("svelte")) {
             logger.info("Setting up a React frontend.");
             String rootName = type;
             try {
@@ -91,8 +91,8 @@ class SetupFrontendTask extends DefaultTask {
             if(!gitIgnoreContent.contains("### Frontend Bundle ###")) {
                 String bundle =
                         "\n\n### Frontend Bundle ###\n" +
-                        "src/main/resources/static/*.js\n" +
-                        "src/main/resources/templates/*.html\n";
+                        "src/main/resources/static/*\n" +
+                        "src/main/resources/templates/*\n";
                 logger.info("Writing Frontend Bundle to .gitignore");
                 Files.write(gitIgnore, bundle.getBytes(), APPEND);
             }
