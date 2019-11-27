@@ -1,13 +1,13 @@
 # Gradle Setup Frontend Plugin
 ##### A gradle plugin that scaffolds a frontend and provides tasks for bundling.
 
-### [Demo](https://www.slideshare.net/WilliamLindner/gradlesetupfrontendplugin-demo)
+### [Demo](https://docs.google.com/presentation/d/1JPTo-jqy0tPY99HUStG28UWLtAXQ8jMluH2oBU-3vjo/edit?usp=sharing)
 
 ### Getting Started
 Add the frontend plugin to `build.gradle`
 ```
 plugins {
-  id 'cool.william.frontend' version '0.0.5'
+  id 'cool.william.frontend' version '0.0.11'
 }
 ```
 
