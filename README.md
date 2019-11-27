@@ -36,7 +36,7 @@ bootRun.dependsOn frontendStart
 
 To build the frontend for distribution when Spring Boot is built into a jar
 ```
-bootJar.dependsOn frontendBuild
+processResources.dependsOn frontendBuild
 ```
 
 To configure Spring Boot to reload resources that change. Useful when running in development mode
