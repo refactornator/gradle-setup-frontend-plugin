@@ -17,13 +17,19 @@ public class SetupFrontendPlugin implements Plugin<Project> {
         project.getPluginManager()
                 .apply("com.moowork.node");
 
-        SetupFrontendTask setupFrontendTask = project.getTasks()
-                .create("setupFrontend", SetupFrontendTask.class);
-
         Optional<Task> npmInstall = project.getTasksByName("npmInstall", true)
                 .stream()
                 .findFirst();
-        npmInstall.ifPresent(setupFrontendTask::finalizedBy);
+
+        SetupFrontendTask setupReactFrontendTask = project.getTasks()
+                .create("setupReactFrontend", SetupFrontendTask.class);
+        setupReactFrontendTask.setProperty("frontendType", "react");
+        npmInstall.ifPresent(setupReactFrontendTask::finalizedBy);
+
+        SetupFrontendTask setupSvelteFrontendTask = project.getTasks()
+                .create("setupSvelteFrontendTask", SetupFrontendTask.class);
+        setupSvelteFrontendTask.setProperty("frontendType", "svelte");
+        npmInstall.ifPresent(setupSvelteFrontendTask::finalizedBy);
 
         project.getPluginManager()
                 .apply("com.github.psxpaul.execfork");

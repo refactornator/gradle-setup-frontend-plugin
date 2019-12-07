@@ -1,4 +1,4 @@
-# Gradle Setup Frontend Plugin
+# Gradle Setup Frontend Plugin [![Gradle Plugin Portal](https://img.shields.io/maven-metadata/v/https/plugins.gradle.org/m2/cool/william/frontend/cool.william.frontend.gradle.plugin/maven-metadata.xml.svg?colorB=007ec6&label=gradle%20plugin)](https://plugins.gradle.org/plugin/cool.william.frontend)
 ##### A gradle plugin that scaffolds a frontend and provides tasks for bundling.
 
 ### [Demo](https://docs.google.com/presentation/d/1JPTo-jqy0tPY99HUStG28UWLtAXQ8jMluH2oBU-3vjo/edit?usp=sharing)
@@ -7,13 +7,20 @@
 Add the frontend plugin to `build.gradle`
 ```
 plugins {
-  id 'cool.william.frontend' version '0.0.11'
+  id 'cool.william.frontend' version '0.0.15'
 }
 ```
 
-[Scaffold](#scaffolding) the frontend
+[Scaffold](#scaffolding) the frontend. Choose between [React](https://reactjs.org/) or [Svelte](https://svelte.dev/)
+
+#### React
 ```
-$ ./gradlew setupFrontend
+$ ./gradlew setupReactFrontend
+```
+
+#### Svelte
+```
+$ ./gradlew setupSvelteFrontend
 ```
 
 [Start](#frontend-start) the frontend in development mode
