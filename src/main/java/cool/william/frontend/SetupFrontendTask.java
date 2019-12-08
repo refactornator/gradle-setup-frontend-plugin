@@ -18,7 +18,7 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 import static java.nio.file.StandardOpenOption.APPEND;
 
 class SetupFrontendTask extends DefaultTask {
-    private static enum FrontendType {
+    private enum FrontendType {
         react, svelte
     }
 
