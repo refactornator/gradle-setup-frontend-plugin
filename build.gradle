@@ -11,10 +11,6 @@ version = '0.0.15'
 sourceCompatibility = '1.8'
 targetCompatibility = '1.8'
 
-node {
-    download = true
-}
-
 repositories {
     mavenCentral()
     maven {
