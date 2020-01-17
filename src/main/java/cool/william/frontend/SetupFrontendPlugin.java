@@ -15,7 +15,7 @@ public class SetupFrontendPlugin implements Plugin<Project> {
     @Override
     public void apply(Project project) {
         project.getPluginManager()
-                .apply("com.moowork.node");
+                .apply("com.github.node-gradle.node");
 
         Optional<Task> npmInstall = project.getTasksByName("npmInstall", true)
                 .stream()
