@@ -16,6 +16,10 @@ public class SetupFrontendPlugin implements Plugin<Project> {
     public void apply(Project project) {
         project.getPluginManager()
                 .apply("com.github.node-gradle.node");
+        Optional<Task> node = project.getTasksByName("node", true)
+                .stream()
+                .findFirst();
+        node.ifPresent(task -> task.setProperty("download", true));
 
         Optional<Task> npmInstall = project.getTasksByName("npmInstall", true)
                 .stream()
